@@ -13,13 +13,14 @@
 		|   |   └── catltem.wpy    分类页子组件(scroll-view问题页面)
 		|   ├── img                图片目录
 		|   ├── pages              WePY页面目录（属于完整页面）
-		|   |   └── film.wpy	   影评(无用)
+		|   |   └── film.wpy	     影评(无用)
 		|   |   └── fl.wpy	   	   分类页(无用)
-		|   |   └── index.wpy	   首页
+		|   |   └── index.wpy	     首页
 		|   |   └── my.wpy	   	   我的(无用)
 		|   |   └── qd.wpy	   	   签到(无用)
 		|   |   └── search.wpy	   搜索(无用)
-		|   |   └── video.wpy	   影评(无用)
+		|   |   └── video.wpy	     影评(无用)
 		|   ├── store              redux目录
 		|   └── app.wpy            小程序配置项目
 		└── package.json           项目的package配置
+   
