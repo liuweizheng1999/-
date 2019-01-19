@@ -1,0 +1,65 @@
+<template>
+    <view class="item-wrap">
+        <view class="title">{{title}}:</view>
+        <scroll-view class="scroller" scroll-x>
+            <repeat for="{{items}}" key="{{index}}">
+                <view class="{{current==index?'item active':'item'}}" @tap="changeItem({{index}})">{{item}}</view>
+            </repeat>
+        </scroll-view>
+    </view>
+</template>
+
+<script>
+import wepy from "wepy"
+export default class CatItem extends wepy.component {
+    data={
+        current:0
+    }
+    props={
+        items:Array,
+        title:String,
+        cattype:String
+    }
+    methods={
+        changeItem(idx){
+            this.current=idx;
+            this.$emit('changeActive',{
+                type:this.cattype,
+                data:this.items[idx]
+            })
+        }
+    }
+}
+</script>
+
+<style>
+.item-wrap{
+    display: flex;
+    line-height: 100rpx;
+    height: 100rpx;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+    white-space: nowrap;
+    width:100%;
+}
+.title{
+    flex: 1;
+    height: 100rpx;
+}
+.scroller{
+    flex: 5;
+
+}
+.item{
+    display: inline-block;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+    line-height: 80rpx;
+    border-radius: 50rpx;
+    margin: 10rpx 10rpx
+}
+.active{
+    background-color: #eee;
+    color: orange
+}
+</style>

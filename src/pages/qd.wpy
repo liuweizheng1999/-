@@ -1,0 +1,25 @@
+<template>
+    <view>
+        <view @tap="back">返回</view>
+        <view class="header">分类</view>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+export default class qd extends wepy.page{
+    methods={
+        back(){
+            wepy.navigateBack({
+              delta: 1 //返回的页面数，如果 delta 大于现有页面数，则返回到首页,
+        });
+        }
+        
+        
+    }
+}
+</script>
+
+<style>
+
+</style>

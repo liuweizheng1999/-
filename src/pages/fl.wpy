@@ -1,0 +1,81 @@
+<template>
+    <view>
+        <view @tap="back">返回</view>
+        <view class="header">分类</view>
+        <view class="wraper">
+            <!--动态传值 items.sync = "data定义的名字" -->
+            <caritem-area :items.sync="area" title="地区" cattype="area"></caritem-area>
+            <caritem-media :items.sync="media" title="形式" cattype="media"></caritem-media>
+            <caritem-type :items.sync="type" title="类型" cattype="type"></caritem-type>
+            <caritem-feature :items.sync="feature" title="特色" cattype="feature"></caritem-feature>
+        </view>
+        <view class="movie-lists">
+        </view>
+
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import caritem from "../components/catltem"
+export default class fl extends wepy.page{
+    components={
+        'caritem-media':caritem,
+        'caritem-area':caritem,
+        'caritem-type':caritem,
+        'caritem-feature':caritem
+    }
+    data={
+        area:[],
+        media:[],
+        type:[],
+        feature:[],
+        movielist:[],
+        o:{
+            type:"全部",media:"全部",area:"全部",feature:"全部",sindex:0
+        }
+    }
+    fetchList(params){
+        //编码
+        let query = encodeURIComponent(`?area=${params.area}&count=10&feature=${params.feature}&media=${params.media}&startIndex=${params.sindex}&type=${params.type}`)
+        wx.request({
+            url:"https://cdnapp.dushemovie.com/dsmovieapi/ssl2/movie/list_movie_by_type/1${query}",
+            success(res){
+                console.log(res)
+            }
+        })
+    }
+    events={
+        changeActive(data){
+            console.log(data)
+            
+        }
+    }
+
+    methods={
+        back(){
+            wx.navigateBack({
+                data:1
+            })
+        }
+    }
+    onLoad(){
+         let that = this;
+         wx.request({
+             url:"https://cdnapp.dushemovie.com/dsmovieapi/ssl2/movie/list_type/1",
+             success(res){
+                that.area = res.data.movieTypeData.areaList
+                that.media = res.data.movieTypeData.mediaList
+                that.type = res.data.movieTypeData.typeList
+                that.feature = res.data.movieTypeData.featureList
+             }
+         })
+    }
+}
+</script>
+
+<style>
+.wraper{
+    width: 100%;
+}
+</style>

@@ -1,0 +1,17 @@
+{
+	"description": "A WePY project",
+	"setting": {
+		"urlCheck": false,
+		"es6": false,
+		"postcss": true,
+		"minified": false,
+		"newFeature": true,
+		"nodeModules": true,
+		"autoAudits": false
+	},
+	"compileType": "miniprogram",
+	"appid": "wxf26801a79a643a5f",
+	"projectname": "scroll-view%E9%97%AE%E9%A2%98%E9%A2%98",
+	"miniprogramRoot": "dist/",
+	"condition": {}
+}

@@ -1,0 +1,16 @@
+<template>
+    <view>
+        <view class="header">影评</view>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+export default class film extends wepy.page{
+
+}
+</script>
+
+<style>
+
+</style>
